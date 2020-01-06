@@ -91,17 +91,17 @@ public class VeiculoController {
       return veiculoSalvo;
   }
   @CrossOrigin
-  @PutMapping(value = "/veiculo")
-  public ResponseEntity<Veiculo> updateCustomer(@RequestBody Veiculo updateVeiculo){
-    Veiculo veiculo = _veiculoRepository.findById(updateVeiculo.getId()).orElseThrow(() -> new ResourceNotFoundException("Veiculo não encontrado"));
+  @PutMapping(value = "/veiculo/{id}")
+  public ResponseEntity<Veiculo> updateCustomer(@RequestBody Veiculo updateVeiculo, @PathVariable long id){
+    Veiculo veiculo = _veiculoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Veiculo não encontrado"));
 
     
     final Veiculo updatedVeiculo = _veiculoRepository.save(veiculo);
     return ResponseEntity.ok(updatedVeiculo);
   }
   @CrossOrigin
-  @DeleteMapping("/delmotorista/{id}")
-    public ResponseEntity<?> deleteGroup(@PathVariable Long id) {
+  @DeleteMapping("/delveiculo/{id}")
+    public ResponseEntity<?> deleteVeiculo(@PathVariable Long id) {
         _veiculoRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }

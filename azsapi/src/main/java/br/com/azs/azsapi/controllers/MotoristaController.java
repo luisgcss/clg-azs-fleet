@@ -84,9 +84,9 @@ public class MotoristaController {
     final Motorista updatedMotorista = _motoristaRepository.save(motorista);
     return ResponseEntity.ok(updatedMotorista);
   }
-  
+  @CrossOrigin
   @DeleteMapping("/motorista/{id}")
-    public ResponseEntity<?> deleteGroup(@PathVariable Long id) {
+    public ResponseEntity<?> deleteMotorista(@PathVariable Long id) {
         _motoristaRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
